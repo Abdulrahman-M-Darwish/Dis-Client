@@ -1,12 +1,12 @@
-import { RegisterPayload, User } from "@/types";
+import { RegisterPayload } from "@/types";
 import { baseApi } from ".";
 
 export const auth = baseApi.injectEndpoints({
 	endpoints: (build) => ({
-		register: build.mutation<string, RegisterPayload>({
+		register: build.mutation<{ message: string }, RegisterPayload>({
 			query: (data) => ({ url: "/auth/signup", method: "POST", body: data }),
 		}),
-		verifyRegistration: build.mutation<string, { email: string; otp: string }>({
+		verifyRegistration: build.mutation<{ message: string }, RegisterPayload>({
 			query: (data) => ({
 				url: "/auth/verify-registration",
 				method: "POST",
@@ -17,12 +17,9 @@ export const auth = baseApi.injectEndpoints({
 			{ token: string },
 			{ email: string; password: string }
 		>({
-			query: (data) => ({ url: "/auth/signin", method: "POST", body: data }),
+			query: (data) => ({ url: "/auth/login", method: "POST", body: data }),
 		}),
-		me: build.query<User, void>({
-			query: () => ({ url: "/auth/me", method: "GET" }),
-		}),
-		forgotPassword: build.mutation<string, { email: string }>({
+		forgotPassword: build.mutation<{ message: string }, { email: string }>({
 			query: (data) => ({
 				url: "/auth/forgot-password",
 				method: "POST",
@@ -30,21 +27,11 @@ export const auth = baseApi.injectEndpoints({
 			}),
 		}),
 		verifyForgotPassword: build.mutation<
-			string,
-			{ email: string; otp: string }
+			{ message: string },
+			{ email: string; otp: string; newPassword: string }
 		>({
 			query: (data) => ({
 				url: "/auth/verify-forgot-password",
-				method: "POST",
-				body: data,
-			}),
-		}),
-		changePassword: build.mutation<
-			string,
-			{ email: string; newPassword: string }
-		>({
-			query: (data) => ({
-				url: "/auth/change-password",
 				method: "POST",
 				body: data,
 			}),
@@ -60,11 +47,8 @@ export const auth = baseApi.injectEndpoints({
 });
 
 export const {
-	useChangePasswordMutation,
 	useForgotPasswordMutation,
-	useLazyMeQuery,
 	useLoginMutation,
-	useMeQuery,
 	useRefreshMutation,
 	useRegisterMutation,
 	useVerifyForgotPasswordMutation,

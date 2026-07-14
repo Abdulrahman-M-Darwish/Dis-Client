@@ -4,7 +4,6 @@ export type RegisterPayload = {
 	name: string;
 	username: string;
 	email: string;
-	password: string;
-	birthDate: string;
-	gender: "male" | "female";
+	passwordHash: string;
+	otp?: string;
 };
