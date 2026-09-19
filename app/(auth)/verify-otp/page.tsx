@@ -46,7 +46,6 @@ export default function VerifyOtpPage() {
 
 	const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		console.log(data);
 
 		if (!data?.email) {
 			setLocalErrorMessage(

@@ -1,4 +1,4 @@
-export * from "./server";
+export * from "./frontend-types";
 
 export type RegisterPayload = {
 	name: string;

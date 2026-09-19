@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { use, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -27,10 +27,14 @@ import {
 } from "@/components/ui/input-otp";
 import { useVerifyForgotPasswordMutation } from "@/store/api/auth";
 
-export default function VerifyForgotPasswordPage() {
+export default function VerifyForgotPasswordPage({
+	searchParams,
+}: {
+	searchParams: Promise<{ email: string }>;
+}) {
 	const router = useRouter();
-	const searchParams = useSearchParams();
-	const email = searchParams.get("email") ?? "";
+	const params = use(searchParams);
+	const email = params.email ?? "";
 	const [otp, setOtp] = useState("");
 	const [newPassword, setNewPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");

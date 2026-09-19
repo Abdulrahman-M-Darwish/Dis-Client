@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import {
 	Field,
-	FieldDescription,
 	FieldError,
 	FieldGroup,
 	FieldLabel,
@@ -51,6 +50,7 @@ export default function LoginPage() {
 		const result = await login(data);
 
 		if (result.data) {
+			localStorage.setItem("accessToken", result.data.accessToken);
 			router.replace("/");
 		}
 	};
@@ -99,7 +99,7 @@ export default function LoginPage() {
 										placeholder="••••••••"
 										autoComplete="current-password"
 									/>
-									<FieldDescription className="flex justify-between items-center">
+									<div className="flex justify-between items-center">
 										{fieldState.invalid && (
 											<FieldError errors={[fieldState.error]} />
 										)}
@@ -110,7 +110,7 @@ export default function LoginPage() {
 										>
 											<Link href="/forgot-password">Forgot password?</Link>
 										</Button>
-									</FieldDescription>
+									</div>
 								</Field>
 							)}
 						/>

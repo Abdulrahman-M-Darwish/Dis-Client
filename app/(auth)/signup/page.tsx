@@ -168,7 +168,7 @@ export default function SignupPage() {
 										<FieldDescription className="flex gap-2 flex-wrap pt-2">
 											<Badge
 												variant="secondary"
-												className="text-xs"
+												className="text-xs text-white"
 												style={{
 													backgroundColor:
 														field.value.length > 8 ? "green" : "#f87171",
@@ -178,7 +178,7 @@ export default function SignupPage() {
 											</Badge>
 											<Badge
 												variant="secondary"
-												className="text-xs"
+												className="text-xs text-white"
 												style={{
 													backgroundColor: field.value.match(/[A-Z]/)
 														? "green"
@@ -189,7 +189,7 @@ export default function SignupPage() {
 											</Badge>
 											<Badge
 												variant="secondary"
-												className="text-xs"
+												className="text-xs text-white"
 												style={{
 													backgroundColor: field.value.match(/[a-z]/)
 														? "green"
@@ -200,7 +200,7 @@ export default function SignupPage() {
 											</Badge>
 											<Badge
 												variant="secondary"
-												className="text-xs"
+												className="text-xs text-white"
 												style={{
 													backgroundColor: field.value.match(/[@$!%*?&#]/)
 														? "green"
@@ -211,7 +211,7 @@ export default function SignupPage() {
 											</Badge>
 											<Badge
 												variant="secondary"
-												className="text-xs"
+												className="text-xs text-white"
 												style={{
 													backgroundColor: field.value.match(/\d/)
 														? "green"
@@ -250,7 +250,11 @@ export default function SignupPage() {
 			</CardContent>
 			<CardFooter className="text-muted-foreground justify-between text-xs">
 				<span>Already have an account?</span>
-				<Button asChild variant="link" className="h-auto px-0 text-xs">
+				<Button
+					asChild
+					variant="link"
+					className="h-auto px-0 text-xs text-white"
+				>
 					<Link href="/login">Sign in</Link>
 				</Button>
 			</CardFooter>
