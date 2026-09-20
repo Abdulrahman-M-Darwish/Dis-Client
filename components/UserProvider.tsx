@@ -3,7 +3,7 @@
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { useLazyGetMeQuery } from "@/store/api/users";
 import { setUser } from "@/store/features/userSlice";
-import { useEffect, ReactNode, memo } from "react";
+import { ReactNode, memo, useLayoutEffect } from "react";
 import { useRouter } from "next/navigation";
 import { isConnectionError } from "@/utils";
 
@@ -13,7 +13,7 @@ export const UserProvider = memo(({ children }: { children: ReactNode }) => {
 	const [getUser, { isLoading }] = useLazyGetMeQuery();
 	const currentUser = useAppSelector((state) => state.user.user);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const initializeAuth = async () => {
 			if (currentUser) return; // User is already set, no need to fetch again
 			try {
