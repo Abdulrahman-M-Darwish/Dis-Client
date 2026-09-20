@@ -296,7 +296,7 @@ export default function FriendsPage() {
 											{/* TAB 1: ALL FRIENDS */}
 											{activeTab === "all" && (
 												<>
-													<Link href={`/chat/${targetUser?._id}`}>
+													<Link href={`/${targetUser?._id}`}>
 														<Button
 															size="sm"
 															className="rounded-xl bg-primary/20 hover:bg-primary/30 text-primary border border-primary/30 text-xs gap-1.5 h-9 px-3 cursor-pointer"
